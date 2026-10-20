@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: webtest
+
+server:
+  port: 8081
