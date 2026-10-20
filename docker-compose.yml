@@ -1,0 +1,14 @@
+services:
+  backend:
+    build: ./backend          # backend/Dockerfile로 빌드
+    restart: unless-stopped   # 에러로 죽으면 자동 재시작
+
+  nginx:
+    build:
+      context: .                     # 리포 루트 기준으로
+      dockerfile: nginx/Dockerfile   # 이 Dockerfile 사용
+    ports:
+      - "8000:80"             # 내 PC 8000 → 컨테이너 80
+    depends_on:
+      - backend               # backend를 먼저 시작
+    restart: unless-stopped
